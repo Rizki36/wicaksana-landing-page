@@ -1,6 +1,8 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { Image } from 'astro:assets';
@@ -11,38 +13,221 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead
+			title={`Blog - ${SITE_TITLE}`}
+			description="Latest insights, articles and news from WicaksanaTech on digital technology and innovation."
+		/>
 	</head>
-	<body>
+	<body class="bg-slate-50">
+		<Header />
 		<main>
-			<section>
-				<ul>
+			<!-- Hero Section -->
+			<section
+				class="relative bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden"
+			>
+				<div
+					class="absolute right-0 top-0 w-1/3 h-full bg-orange-500 clip-path-hero opacity-90"
+				>
+				</div>
+				<div
+					class="container mx-auto px-4 py-16 md:py-24 relative z-10"
+				>
+					<div class="max-w-3xl">
+						<h1 class="text-4xl md:text-5xl font-bold mb-4">
+							Blog & Insights
+						</h1>
+						<p class="text-xl mb-6 text-slate-200">
+							The latest technology trends, insights and
+							innovation stories from WicaksanaTech.
+						</p>
+					</div>
+				</div>
+				<div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+			</section>
+
+			<!-- Blog Posts Section -->
+			<section class="py-16 bg-white">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-12">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Latest Articles</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							Technology Insights
+						</h2>
+					</div>
+
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+					>
+						{
+							posts.map((post) => (
+								<article class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+									<a href={`/blog/${post.id}/`} class="block">
+										{post.data.heroImage && (
+											<div class="relative h-48 overflow-hidden">
+												<Image
+													src={post.data.heroImage}
+													alt={post.data.title}
+													width={720}
+													height={360}
+													class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+												/>
+												<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-60" />
+											</div>
+										)}
+										<div class="p-6">
+											<div class="mb-4 flex items-center">
+												<span class="bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+													{post.data.category ||
+														'Technology'}
+												</span>
+												<span class="text-slate-500 text-sm ml-auto">
+													<FormattedDate
+														date={post.data.pubDate}
+													/>
+												</span>
+											</div>
+											<h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-orange-500 transition-colors">
+												{post.data.title}
+											</h3>
+											<p class="text-slate-600 line-clamp-3 mb-4">
+												{post.data.description ||
+													'Read our latest article on technology and innovation.'}
+											</p>
+											<div class="flex items-center mt-4">
+												<span class="text-orange-500 font-medium text-sm flex items-center">
+													Read More
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-4 w-4 ml-1"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+													>
+														<path
+															fill-rule="evenodd"
+															d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+															clip-rule="evenodd"
+														/>
+													</svg>
+												</span>
+											</div>
+										</div>
+									</a>
+								</article>
+							))
+						}
+					</div>
+
 					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image
-											width={720}
-											height={360}
-											src={post.data.heroImage}
-											alt=""
-										/>
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate
-											date={post.data.pubDate}
-										/>
-									</p>
-								</a>
-							</li>
-						))
+						posts.length === 0 && (
+							<div class="bg-slate-100 rounded-tr-3xl rounded-bl-3xl p-12 text-center shadow-lg max-w-xl mx-auto">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-16 w-16 text-orange-500 mx-auto mb-6 opacity-50"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+									/>
+								</svg>
+								<h3 class="text-2xl font-bold text-slate-800 mb-3">
+									Content Coming Soon
+								</h3>
+								<p class="text-slate-600 mb-6">
+									We're working on creating valuable content
+									and articles. Check back later for
+									technology insights and innovation stories.
+								</p>
+							</div>
+						)
 					}
-				</ul>
+				</div>
+			</section>
+
+			<!-- Newsletter Section -->
+			<section class="py-16 bg-slate-100">
+				<div class="container mx-auto px-4">
+					<div
+						class="max-w-3xl mx-auto bg-white rounded-tr-3xl rounded-bl-3xl p-8 md:p-12 shadow-xl relative overflow-hidden"
+					>
+						<div
+							class="absolute -top-20 -right-20 w-40 h-40 bg-orange-500/10 rounded-full"
+						>
+						</div>
+						<div
+							class="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-500/10 rounded-full"
+						>
+						</div>
+
+						<div class="text-center mb-8 relative z-10">
+							<span
+								class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+								>Stay Updated</span
+							>
+							<h2 class="text-3xl font-bold text-slate-800 mt-2">
+								Subscribe to Our Newsletter
+							</h2>
+							<p class="text-slate-600 mt-3">
+								Get the latest technology insights and updates
+								straight to your inbox.
+							</p>
+						</div>
+
+						<form class="relative z-10">
+							<div class="flex flex-col sm:flex-row gap-4">
+								<input
+									type="email"
+									placeholder="Enter your email address"
+									class="w-full px-4 py-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+									required
+								/>
+								<button
+									type="submit"
+									class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition-colors whitespace-nowrap shadow-md"
+								>
+									Subscribe
+								</button>
+							</div>
+						</form>
+
+						<div
+							class="text-center mt-6 text-xs text-slate-500 relative z-10"
+						>
+							We respect your privacy. Unsubscribe at any time.
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
+
+		<style>
+			.clip-path-hero {
+				clip-path: polygon(100% 0, 100% 100%, 0 100%);
+			}
+
+			.bg-grid-pattern {
+				background-image: linear-gradient(
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					),
+					linear-gradient(
+						90deg,
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					);
+				background-size: 20px 20px;
+			}
+		</style>
+
+		<Footer />
 	</body>
 </html>

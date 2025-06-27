@@ -1,24 +1,348 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { id: string };
 
-const { title, description } = Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	category,
+	author = 'WicaksanaTech',
+	tags = [],
+	id,
+} = Astro.props;
+
+// Get related posts: Same category first, then recent posts
+const allPosts = await getCollection('blog');
+
+// Filter to get posts with same category, excluding the current post
+let relatedPosts = allPosts
+	.filter((post) => post.data.category === category && post.id !== id)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+// If we don't have enough related posts by category, fill with recent posts
+if (relatedPosts.length < 3) {
+	const additionalPosts = allPosts
+		.filter(
+			(post) =>
+				post.id !== id && !relatedPosts.some((p) => p.id === post.id),
+		)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+		.slice(0, 3 - relatedPosts.length);
+
+	relatedPosts = [...relatedPosts, ...additionalPosts];
+}
+
+// Show the related posts section only if we have any posts
+const showRelatedPosts = relatedPosts.length > 0;
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
 
-	<body>
+	<body class="bg-slate-50">
 		<Header />
 		<main>
-			<!-- TODO -->
+			<!-- Hero Section -->
+			<section
+				class="relative bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden"
+			>
+				<div
+					class="absolute right-0 top-0 w-1/3 h-full bg-orange-500 clip-path-hero opacity-90"
+				>
+				</div>
+				<div
+					class="container mx-auto px-4 py-16 md:py-20 relative z-10"
+				>
+					<div class="max-w-3xl">
+						<!-- Category Badge -->
+						{
+							category && (
+								<span class="inline-block bg-orange-500 text-white text-xs font-medium px-3 py-1 rounded-full mb-4">
+									{category}
+								</span>
+							)
+						}
+
+						<!-- Post Title -->
+						<h1
+							class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+						>
+							{title}
+						</h1>
+
+						<!-- Meta Information -->
+						<div
+							class="flex items-center text-slate-300 text-sm mb-6"
+						>
+							{
+								author && (
+									<span class="flex items-center mr-6">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4 mr-1"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+												clip-rule="evenodd"
+											/>
+										</svg>
+										{author}
+									</span>
+								)
+							}
+							<span class="flex items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-4 w-4 mr-1"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+										clip-rule="evenodd"></path>
+								</svg>
+								<FormattedDate date={pubDate} />
+							</span>
+							{
+								updatedDate && (
+									<span class="flex items-center ml-6">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4 mr-1"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+												clip-rule="evenodd"
+											/>
+										</svg>
+										Updated:{' '}
+										<FormattedDate date={updatedDate} />
+									</span>
+								)
+							}
+						</div>
+
+						<!-- Description -->
+						{
+							description && (
+								<p class="text-xl text-slate-200 mb-4">
+									{description}
+								</p>
+							)
+						}
+					</div>
+				</div>
+				<div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+			</section>
+
+			<!-- Featured Image Section (if available) -->
+			{
+				heroImage && (
+					<div class="relative -mt-8 z-20 container mx-auto px-4">
+						<div class="max-w-4xl mx-auto">
+							<div class="bg-white p-4 rounded-tr-3xl rounded-bl-3xl shadow-xl">
+								<div class="aspect-video overflow-hidden rounded-tr-xl rounded-bl-xl">
+									<Image
+										src={heroImage}
+										alt={title}
+										width={1200}
+										height={675}
+										class="w-full h-full object-cover"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				)
+			}
+
+			<!-- Blog Content -->
+			<section class="py-12 md:py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-3xl mx-auto">
+						<!-- Content from markdown rendered here -->
+						<article
+							class="prose prose-slate max-w-none prose-headings:text-slate-800 prose-a:text-orange-600 prose-a:no-underline hover:prose-a:text-orange-500 prose-img:rounded-tr-xl prose-img:rounded-bl-xl"
+						>
+							<slot />
+						</article>
+
+						<!-- Tags (if available) -->
+						{
+							tags && tags.length > 0 && (
+								<div class="mt-10 pt-8 border-t border-slate-200">
+									<div class="flex flex-wrap gap-2">
+										<span class="text-slate-700 font-medium">
+											Tags:
+										</span>
+										{tags.map((tag) => (
+											<span class="text-sm bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-full transition-colors">
+												{tag}
+											</span>
+										))}
+									</div>
+								</div>
+							)
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Related Posts Section -->
+			{
+				showRelatedPosts && (
+					<section class="py-16 bg-slate-100">
+						<div class="container mx-auto px-4">
+							<div class="text-center mb-10">
+								<span class="text-orange-500 font-semibold text-sm tracking-wide uppercase">
+									Explore More
+								</span>
+								<h2 class="text-3xl font-bold text-slate-800 mt-2">
+									Related Articles
+								</h2>
+							</div>
+
+							<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+								{relatedPosts.map((post) => (
+									<article class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+										<a
+											href={`/blog/${post.id}/`}
+											class="block"
+										>
+											<div class="relative h-48 overflow-hidden">
+												{post.data.heroImage ? (
+													<Image
+														src={
+															post.data.heroImage
+														}
+														alt={post.data.title}
+														width={400}
+														height={225}
+														class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+													/>
+												) : (
+													<div class="bg-slate-300 w-full h-full" />
+												)}
+												<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-60" />
+											</div>
+											<div class="p-6">
+												<div class="mb-4 flex items-center">
+													{post.data.category && (
+														<span class="bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+															{post.data.category}
+														</span>
+													)}
+													<span class="text-slate-500 text-sm ml-auto">
+														<FormattedDate
+															date={
+																post.data
+																	.pubDate
+															}
+														/>
+													</span>
+												</div>
+												<h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-orange-500 transition-colors">
+													{post.data.title}
+												</h3>
+												<p class="text-slate-600 line-clamp-3">
+													{post.data.description ||
+														'Read our latest article on technology and innovation.'}
+												</p>
+											</div>
+										</a>
+									</article>
+								))}
+							</div>
+						</div>
+					</section>
+				)
+			}
+
+			<!-- CTA Section -->
+			<section
+				class="py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white"
+			>
+				<div class="container mx-auto px-4">
+					<div class="max-w-3xl mx-auto text-center">
+						<h2 class="text-3xl md:text-4xl font-bold mb-4">
+							Have a Project in Mind?
+						</h2>
+						<p class="text-xl text-slate-300 mb-8">
+							Let's transform your ideas into reality with our
+							technology solutions.
+						</p>
+						<div class="flex flex-wrap justify-center gap-4">
+							<a
+								href="/#contact"
+								class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-md font-medium text-lg transition-colors shadow-lg inline-flex items-center"
+							>
+								Get in Touch
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-5 w-5 ml-2"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+										clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<a
+								href="/#services"
+								class="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 rounded-md font-medium text-lg transition-colors inline-block"
+							>
+								Our Services
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
+
+		<style>
+			.clip-path-hero {
+				clip-path: polygon(100% 0, 100% 100%, 0 100%);
+			}
+
+			.bg-grid-pattern {
+				background-image: linear-gradient(
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					),
+					linear-gradient(
+						90deg,
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					);
+				background-size: 20px 20px;
+			}
+
+			/* Add Tailwind's typography plugin styles for the blog content */
+			/* This ensures the markdown content is styled properly */
+		</style>
+
 		<Footer />
 	</body>
 </html>
