@@ -1,0 +1,998 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-slate-50">
+		<Header />
+		<main>
+			<!-- Hero Section -->
+			<section
+				class="relative bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden"
+			>
+				<div
+					class="absolute right-0 top-0 w-1/3 h-full bg-orange-500 clip-path-hero opacity-90"
+				>
+				</div>
+				<div
+					class="container mx-auto px-4 py-20 md:py-32 relative z-10"
+				>
+					<div class="max-w-2xl">
+						<h1
+							class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+						>
+							Technology with <span class="text-orange-500"
+								>Wisdom</span
+							>
+						</h1>
+						<p class="text-xl mb-8 text-slate-200">
+							Building smart and strategic tech solutions for
+							modern businesses that drive sustainable growth.
+						</p>
+						<div class="flex flex-wrap gap-4">
+							<a
+								href="#contact"
+								class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-lg"
+							>
+								Get a Free Consultation
+							</a>
+							<a
+								href="#services"
+								class="bg-transparent border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-md font-medium transition-colors"
+							>
+								Explore Our Services
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+			</section>
+
+			<!-- About Us Section -->
+			<section id="about" class="py-20 bg-white">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-16">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>About Us</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							Who We Are
+						</h2>
+					</div>
+
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+					>
+						<div class="relative">
+							<div
+								class="bg-orange-500 w-64 h-64 md:w-80 md:h-80 rounded-tr-3xl rounded-bl-3xl"
+							>
+							</div>
+							<div
+								class="absolute inset-0 transform translate-x-8 translate-y-8"
+							>
+								<div
+									class="bg-slate-800 w-64 h-64 md:w-80 md:h-80 rounded-tr-3xl rounded-bl-3xl shadow-xl flex items-center justify-center"
+								>
+									<span
+										class="text-5xl font-bold text-orange-500"
+										>W</span
+									>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="text-2xl font-bold text-slate-800 mb-4">
+								WicaksanaTech
+							</h3>
+							<p class="text-slate-600 mb-6">
+								WicaksanaTech is a digital technology agency
+								committed to building smart and strategic tech
+								solutions for modern businesses. Rooted in the
+								spirit of wisdom and innovation, we help
+								companies navigate the digital era with
+								professional, efficient, and impactful services.
+							</p>
+							<p class="text-slate-600 mb-8">
+								We believe that technology is not just a tool,
+								but a trusted partner in sustainable growth.
+								With a team of experienced professionals in
+								software development, IT infrastructure, and
+								digital business strategy, WicaksanaTech aims to
+								be your reliable and wise technology partner.
+							</p>
+
+							<div class="flex gap-6">
+								<div>
+									<div
+										class="text-orange-500 font-bold text-xl mb-1"
+									>
+										Wisdom
+									</div>
+									<p class="text-slate-600">
+										Strategic thinking in every solution
+									</p>
+								</div>
+								<div>
+									<div
+										class="text-orange-500 font-bold text-xl mb-1"
+									>
+										Innovation
+									</div>
+									<p class="text-slate-600">
+										Cutting-edge approaches
+									</p>
+								</div>
+								<div>
+									<div
+										class="text-orange-500 font-bold text-xl mb-1"
+									>
+										Reliability
+									</div>
+									<p class="text-slate-600">
+										Consistently delivering quality
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Vision Section -->
+			<section class="py-20 bg-slate-900">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-12">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Our Vision</span
+						>
+						<h2 class="text-3xl font-bold text-white mt-2">
+							Looking Forward
+						</h2>
+					</div>
+
+					<div class="max-w-3xl mx-auto text-center">
+						<blockquote class="relative">
+							<div
+								class="text-6xl text-orange-500 absolute -top-8 left-0"
+							>
+								"
+							</div>
+							<p
+								class="text-xl md:text-2xl text-white italic leading-relaxed relative z-10 px-8"
+							>
+								To become a trusted technology agency that
+								prioritizes wisdom in innovation, delivering
+								impactful, sustainable, and relevant digital
+								solutions for the future.
+							</p>
+							<div
+								class="text-6xl text-orange-500 absolute -bottom-8 right-0"
+							>
+								"
+							</div>
+						</blockquote>
+					</div>
+				</div>
+			</section>
+
+			<!-- Services Section -->
+			<section id="services" class="py-20 bg-white">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-16">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Our Services</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							What We Offer
+						</h2>
+						<p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+							Comprehensive technology solutions tailored to your
+							business needs
+						</p>
+					</div>
+
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+					>
+						<!-- Service Card 1 -->
+						<div
+							class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow group"
+						>
+							<div
+								class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500 group-hover:text-white transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Web & App Development
+							</h3>
+							<ul class="text-slate-600 space-y-2">
+								<li>• Company profile websites</li>
+								<li>• E-commerce platforms</li>
+								<li>• Mobile apps (Android & iOS)</li>
+								<li>• Custom dashboards & systems</li>
+							</ul>
+						</div>
+
+						<!-- Service Card 2 -->
+						<div
+							class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow group"
+						>
+							<div
+								class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500 group-hover:text-white transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								IT Support & Infrastructure
+							</h3>
+							<ul class="text-slate-600 space-y-2">
+								<li>• Network installation & management</li>
+								<li>• Cloud infrastructure consulting</li>
+								<li>• System maintenance</li>
+								<li>• IT troubleshooting</li>
+							</ul>
+						</div>
+
+						<!-- Service Card 3 -->
+						<div
+							class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow group"
+						>
+							<div
+								class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500 group-hover:text-white transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								UI/UX & Branding
+							</h3>
+							<ul class="text-slate-600 space-y-2">
+								<li>• User interface & experience design</li>
+								<li>• Visual identity design</li>
+								<li>• Logo & style guide</li>
+								<li>• Website redesign & usability audits</li>
+							</ul>
+						</div>
+
+						<!-- Service Card 4 -->
+						<div
+							class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow group"
+						>
+							<div
+								class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500 group-hover:text-white transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Digital Integration & Automation
+							</h3>
+							<ul class="text-slate-600 space-y-2">
+								<li>• API integrations between systems</li>
+								<li>• Business process automation</li>
+								<li>• Custom automation solutions</li>
+								<li>• Real-time monitoring systems</li>
+							</ul>
+						</div>
+
+						<!-- Service Card 5 -->
+						<div
+							class="bg-white border border-slate-200 rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow group"
+						>
+							<div
+								class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500 group-hover:text-white transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Technology Consulting
+							</h3>
+							<ul class="text-slate-600 space-y-2">
+								<li>• Digital transformation assistance</li>
+								<li>• Technology needs analysis</li>
+								<li>• Digital roadmap planning</li>
+								<li>• Employee tech upskilling</li>
+							</ul>
+						</div>
+
+						<!-- Coming Soon Card -->
+						<div
+							class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-tr-3xl rounded-bl-3xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+						>
+							<div
+								class="bg-orange-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-8 w-8 text-orange-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-white mb-3">
+								Custom Solutions
+							</h3>
+							<p class="text-slate-300 mb-4">
+								Need something specific? We develop custom
+								solutions tailored to your unique business
+								challenges.
+							</p>
+							<a
+								href="#contact"
+								class="inline-flex items-center text-orange-500 font-medium"
+							>
+								Contact us to learn more
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-5 w-5 ml-1"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+										clip-rule="evenodd"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Projects Placeholder -->
+			<section class="py-20 bg-slate-100">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-16">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Our Projects</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							Success Stories
+						</h2>
+					</div>
+
+					<div
+						class="bg-white rounded-tr-3xl rounded-bl-3xl p-12 text-center shadow-lg max-w-xl mx-auto"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-16 w-16 text-orange-500 mx-auto mb-6 opacity-50"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+							></path>
+						</svg>
+						<h3 class="text-2xl font-bold text-slate-800 mb-3">
+							Coming Soon
+						</h3>
+						<p class="text-slate-600 mb-6">
+							We're working on showcasing our latest projects.
+							Check back later to see our portfolio of successful
+							client implementations.
+						</p>
+						<a
+							href="#contact"
+							class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-md inline-block"
+						>
+							Talk About Your Project
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Why Choose Us Section -->
+			<section id="why-us" class="py-20 bg-white">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-16">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Why Choose Us</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							The WicaksanaTech Advantage
+						</h2>
+					</div>
+
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+					>
+						<!-- Feature 1 -->
+						<div class="text-center p-6">
+							<div
+								class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-10 w-10 text-orange-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Experienced Team
+							</h3>
+							<p class="text-slate-600">
+								Skilled professionals with years of expertise in
+								technology and business solutions.
+							</p>
+						</div>
+
+						<!-- Feature 2 -->
+						<div class="text-center p-6">
+							<div
+								class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-10 w-10 text-orange-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Tailored Solutions
+							</h3>
+							<p class="text-slate-600">
+								Custom-built technology solutions designed
+								specifically for your business needs.
+							</p>
+						</div>
+
+						<!-- Feature 3 -->
+						<div class="text-center p-6">
+							<div
+								class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-10 w-10 text-orange-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Strategic Approach
+							</h3>
+							<p class="text-slate-600">
+								We combine wisdom with technology to create
+								solutions that drive real business growth.
+							</p>
+						</div>
+
+						<!-- Feature 4 -->
+						<div class="text-center p-6">
+							<div
+								class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-10 w-10 text-orange-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+									></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-800 mb-3">
+								Agile & Scalable
+							</h3>
+							<p class="text-slate-600">
+								Our solutions evolve with your business,
+								ensuring long-term relevance and adaptability.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA Section -->
+			<section
+				class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white"
+			>
+				<div class="container mx-auto px-4">
+					<div class="max-w-3xl mx-auto text-center">
+						<h2 class="text-3xl md:text-4xl font-bold mb-4">
+							Let's Build Your Next Digital Solution
+						</h2>
+						<p class="text-xl text-slate-300 mb-8">
+							Ready to transform your business with technology
+							that works for you?
+						</p>
+						<a
+							href="#contact"
+							class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-md font-medium text-lg transition-colors shadow-lg inline-flex items-center"
+						>
+							Get Started Today
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5 ml-2"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<section id="contact" class="py-20 bg-white">
+				<div class="container mx-auto px-4">
+					<div class="text-center mb-16">
+						<span
+							class="text-orange-500 font-semibold text-sm tracking-wide uppercase"
+							>Contact Us</span
+						>
+						<h2 class="text-3xl font-bold text-slate-800 mt-2">
+							Get In Touch
+						</h2>
+						<p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+							Have a question or ready to start your next project?
+							Reach out to us and we'll get back to you as soon as
+							possible.
+						</p>
+					</div>
+
+					<div
+						class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto"
+					>
+						<div
+							class="bg-slate-100 p-8 rounded-tr-3xl rounded-bl-3xl shadow-lg"
+						>
+							<h3 class="text-2xl font-bold text-slate-800 mb-6">
+								Send us a message
+							</h3>
+
+							<form>
+								<div class="mb-6">
+									<label
+										for="name"
+										class="block text-sm font-medium text-slate-700 mb-1"
+										>Full Name</label
+									>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+										required
+									/>
+								</div>
+
+								<div class="mb-6">
+									<label
+										for="email"
+										class="block text-sm font-medium text-slate-700 mb-1"
+										>Email Address</label
+									>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+										required
+									/>
+								</div>
+
+								<div class="mb-6">
+									<label
+										for="subject"
+										class="block text-sm font-medium text-slate-700 mb-1"
+										>Subject</label
+									>
+									<select
+										id="subject"
+										name="subject"
+										class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none bg-white"
+									>
+										<option value=""
+											>Select a subject</option
+										>
+										<option value="web-development"
+											>Web Development</option
+										>
+										<option value="it-support"
+											>IT Support</option
+										>
+										<option value="ui-ux"
+											>UI/UX Design</option
+										>
+										<option value="digital-integration"
+											>Digital Integration</option
+										>
+										<option value="consulting"
+											>Technology Consulting</option
+										>
+										<option value="other">Other</option>
+									</select>
+								</div>
+
+								<div class="mb-6">
+									<label
+										for="message"
+										class="block text-sm font-medium text-slate-700 mb-1"
+										>Your Message</label
+									>
+									<textarea
+										id="message"
+										name="message"
+										rows="5"
+										class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+										required></textarea>
+								</div>
+
+								<button
+									type="submit"
+									class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-md"
+								>
+									Send Message
+								</button>
+							</form>
+						</div>
+
+						<div class="flex flex-col justify-between">
+							<div>
+								<h3
+									class="text-2xl font-bold text-slate-800 mb-6"
+								>
+									Contact Information
+								</h3>
+
+								<div class="space-y-6">
+									<div class="flex items-start">
+										<div
+											class="bg-orange-100 rounded-full w-10 h-10 flex items-center justify-center mr-4"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5 text-orange-500"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+												></path>
+											</svg>
+										</div>
+										<div>
+											<h4
+												class="font-medium text-slate-800 mb-1"
+											>
+												Email
+											</h4>
+											<a
+												href="mailto:info@wicaksanatech.com"
+												class="text-orange-500 hover:text-orange-600"
+												>info@wicaksanatech.com</a
+											>
+										</div>
+									</div>
+
+									<div class="flex items-start">
+										<div
+											class="bg-orange-100 rounded-full w-10 h-10 flex items-center justify-center mr-4"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5 text-orange-500"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+												></path>
+											</svg>
+										</div>
+										<div>
+											<h4
+												class="font-medium text-slate-800 mb-1"
+											>
+												Phone
+											</h4>
+											<a
+												href="tel:+6281234567890"
+												class="text-orange-500 hover:text-orange-600"
+												>+62 812 3456 7890</a
+											>
+										</div>
+									</div>
+
+									<div class="flex items-start">
+										<div
+											class="bg-orange-100 rounded-full w-10 h-10 flex items-center justify-center mr-4"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5 text-orange-500"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+												></path>
+											</svg>
+										</div>
+										<div>
+											<h4
+												class="font-medium text-slate-800 mb-1"
+											>
+												Social Media
+											</h4>
+											<div class="flex space-x-4 mt-2">
+												<a
+													href="#"
+													class="text-slate-600 hover:text-orange-500"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														stroke-width="2"
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														class="w-5 h-5"
+														><path
+															d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+														></path><rect
+															width="4"
+															height="12"
+															x="2"
+															y="9"></rect><circle
+															cx="4"
+															cy="4"
+															r="2"></circle></svg
+													>
+												</a>
+												<a
+													href="#"
+													class="text-slate-600 hover:text-orange-500"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														stroke-width="2"
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														class="w-5 h-5"
+														><path
+															d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+														></path></svg
+													>
+												</a>
+												<a
+													href="#"
+													class="text-slate-600 hover:text-orange-500"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														stroke-width="2"
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														class="w-5 h-5"
+														><rect
+															width="20"
+															height="20"
+															x="2"
+															y="2"
+															rx="5"
+															ry="5"></rect><path
+															d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+														></path><line
+															x1="17.5"
+															y1="6.5"
+															x2="17.51"
+															y2="6.5"
+														></line></svg
+													>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div
+								class="bg-slate-800 rounded-tr-3xl rounded-bl-3xl p-8 text-white mt-8 lg:mt-0"
+							>
+								<h4 class="text-xl font-bold mb-4">
+									Business Hours
+								</h4>
+								<div class="space-y-2">
+									<div class="flex justify-between">
+										<span>Monday - Friday:</span>
+										<span>9:00 AM - 6:00 PM</span>
+									</div>
+									<div class="flex justify-between">
+										<span>Saturday:</span>
+										<span>9:00 AM - 3:00 PM</span>
+									</div>
+									<div class="flex justify-between">
+										<span>Sunday:</span>
+										<span>Closed</span>
+									</div>
+								</div>
+								<div
+									class="mt-6 pt-6 border-t border-slate-700"
+								>
+									<p class="text-slate-300 italic">
+										"Technology with wisdom is not just our
+										tagline—it's our promise to you."
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<style>
+			.clip-path-hero {
+				clip-path: polygon(100% 0, 100% 100%, 0 100%);
+			}
+
+			.bg-grid-pattern {
+				background-image: linear-gradient(
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					),
+					linear-gradient(
+						90deg,
+						rgba(255, 255, 255, 0.05) 1px,
+						transparent 1px
+					);
+				background-size: 20px 20px;
+			}
+		</style>
+
+		<Footer />
+	</body>
+</html>
